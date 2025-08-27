@@ -1,103 +1,155 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen flex items-center justify-center p-8 bg-gray-200">
+      <section className="p-6 bg-white rounded-2xl shadow-2xl w-[420px]">
+        
+        {/* Header */}
+        <header className="mb-4">
+          <h1 className="text-xl font-bold text-black">Appearance</h1>
+          <p className="text-base text-gray-400">
+            Set or customize your preferences for the system
+          </p>
+        </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <hr className="my-4 border-gray-400" />
+
+        {/* Language */}
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-sm font-medium text-gray-700">Language</h2>
+            <p className="text-sm text-gray-400">
+              Select the language of the platform
+            </p>
+          </div>
+          <select
+            id="language"
+            className="ml-4 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <option>English</option>
+            <option>Español</option>
+            <option>Français</option>
+          </select>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <hr className="my-4 border-gray-400" />
+
+        {/* Interface theme */}
+        <fieldset className="mb-6">
+          <legend className="block text-sm font-medium text-gray-700 mb-2">
+            Interface theme
+          </legend>
+          <p className="text-sm text-gray-400 mb-3">
+            Customize your application appearance
+          </p>
+          <div className="flex gap-3">
+            {["Auto", "Light", "Dark"].map((theme) => (
+              <label
+                key={theme}
+                className={`flex-1 rounded-lg border-2 cursor-pointer overflow-hidden ${
+                  theme === "Light"
+                    ? "border-purple-500 bg-purple-50"
+                    : "border-gray-200 bg-gray-50"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="theme"
+                  className="hidden"
+                  defaultChecked={theme === "Light"}
+                />
+                <div className="p-4">
+                  <div className="h-10 w-full rounded-md bg-gradient-to-r from-gray-100 to-gray-300 mb-2"></div>
+                  <p className="text-center text-sm text-gray-700">{theme}</p>
+                </div>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <hr className="my-4 border-gray-200" />
+
+        {/* Accent color */}
+        <fieldset className="mb-6">
+          <legend className="block text-sm font-medium text-gray-700 mb-2">
+            Accent color
+          </legend>
+          <p className="text-sm text-gray-400 mb-3">
+            Pick your platform’s main color
+          </p>
+          <ul className="flex gap-3">
+            {["red-500", "yellow-400", "green-500", "blue-500", "purple-500"].map(
+              (color) => (
+                <li key={color}>
+                  <label>
+                    <input
+                      type="radio"
+                      name="accent"
+                      className="hidden"
+                      defaultChecked={color === "purple-500"}
+                    />
+                    <span
+                      className={`block w-7 h-7 rounded-full border-2 ${
+                        color === "purple-500"
+                          ? "border-gray-700"
+                          : "border-gray-200"
+                      } bg-${color}`}
+                    ></span>
+                  </label>
+                </li>
+              )
+            )}
+          </ul>
+        </fieldset>
+
+        <hr className="my-4 border-gray-200" />
+
+        {/* Toggles */}
+        <section className="space-y-4 mb-6">
+          <div className="flex items-center justify-between">
+            <span className="text-gray-700">Reduce motion</span>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" className="sr-only peer" defaultChecked />
+              <div className="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-purple-600 transition"></div>
+              <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5"></div>
+            </label>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <span className="text-gray-700">Auto play</span>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" className="sr-only peer" defaultChecked />
+              <div className="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-purple-600 transition"></div>
+              <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5"></div>
+            </label>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <span className="text-gray-700">High quality photo</span>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" className="sr-only peer" />
+              <div className="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-purple-600 transition"></div>
+              <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5"></div>
+            </label>
+          </div>
+        </section>
+
+        <hr className="my-4 border-gray-200" />
+
+        {/* Footer actions */}
+        <footer className="flex justify-between items-center">
+          <button className="text-sm text-gray-500 hover:underline">
+            Reset to default
+          </button>
+          <div className="space-x-2">
+            <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100">
+              Cancel
+            </button>
+            <button className="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700">
+              Save Preferences
+            </button>
+          </div>
+        </footer>
+      </section>
+    </main>
   );
 }
